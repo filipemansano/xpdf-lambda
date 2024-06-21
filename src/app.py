@@ -12,6 +12,16 @@ BUCKET_NAME = os.environ['BUCKET_NAME']
 
 def lambda_handler(event, context):
 
+    if event['httpMethod'] == 'OPTIONS':
+        return {
+            'statusCode': 200,
+            'headers': {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'POST',
+                'Access-Control-Allow-Headers': 'Content-Type'
+            }
+        }
+
     try:
         body = base64.b64decode(event['body'])
 

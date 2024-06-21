@@ -122,3 +122,9 @@ Resources:
             Method: post
             Auth: 
               ApiKeyRequired: true
+        Options:
+          Type: Api
+          Properties:
+            RestApiId: !Ref RestApiXpdf
+            Path: /{proxy+}
+            Method: options
